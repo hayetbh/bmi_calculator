@@ -7,10 +7,6 @@ class CalculBMI extends GetxController {
   final int weight;
   double _bmi;
 
-  void onInit() {
-    GetStorage box = GetStorage();
-  }
-
   CalculBMI({this.height, this.weight});
 
   String getBMI() {
