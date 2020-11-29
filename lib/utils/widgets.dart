@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 //Calcul Button
@@ -18,23 +19,9 @@ class CalculatorButton extends StatelessWidget {
           ),
           height: 75.0,
           width: double.infinity,
-          color: Colors.pink[500],
+          color: activeColor,
           margin: EdgeInsets.only(top: 10.0),
         ));
-  }
-}
-
-//les mois et plus button
-class ButtonPlusMois extends StatelessWidget {
-  ButtonPlusMois({this.buttonIcon, this.onPressfn});
-  final IconData buttonIcon;
-  final Function onPressfn;
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(buttonIcon),
-      onPressed: onPressfn,
-    );
   }
 }
 
@@ -56,6 +43,32 @@ class BMIContainer extends StatelessWidget {
           color: containerColor,
           borderRadius: BorderRadius.circular(15.0),
         ),
+      ),
+    );
+  }
+}
+
+//les button + et -
+class RoundIconButton extends StatelessWidget {
+  final IconData icon;
+  final Function onPressfn;
+
+  RoundIconButton({this.icon, this.onPressfn});
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      shape: CircleBorder(),
+      fillColor: activeColor,
+      constraints: BoxConstraints.tightFor(
+        width: 50,
+        height: 50,
+      ),
+      elevation: 6,
+      onPressed: onPressfn,
+      child: Icon(
+        icon,
+        color: Colors.white,
       ),
     );
   }

@@ -33,7 +33,9 @@ class _CalculatorViewState extends State<CalculatorView> {
     return Scaffold(
         appBar: AppBar(
           title: Text("BMI Calculator"),
+          backgroundColor: inactiveColor,
         ),
+        backgroundColor: inactiveColor,
         body: SafeArea(
           child: Column(
             children: <Widget>[
@@ -50,7 +52,7 @@ class _CalculatorViewState extends State<CalculatorView> {
                         },
                         containerColor: selectedGender == Gender.male
                             ? activeColor
-                            : inactiveColor,
+                            : cardColor,
                         mychild: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
@@ -78,7 +80,7 @@ class _CalculatorViewState extends State<CalculatorView> {
                         },
                         containerColor: selectedGender == Gender.female
                             ? activeColor
-                            : inactiveColor,
+                            : cardColor,
                         mychild: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
@@ -106,7 +108,7 @@ class _CalculatorViewState extends State<CalculatorView> {
                   children: <Widget>[
                     Expanded(
                       child: BMIContainer(
-                        containerColor: activeColor,
+                        containerColor: cardColor,
                         mychild: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
@@ -127,23 +129,25 @@ class _CalculatorViewState extends State<CalculatorView> {
                                   style: mynumberstyle,
                                 ),
                                 Text(
-                                  "CM",
+                                  "Cm",
                                   style: mytextstyle,
                                 )
                               ],
                             ),
                             SliderTheme(
                                 data: SliderTheme.of(context).copyWith(
-                                    thumbShape: RoundSliderThumbShape(
-                                        enabledThumbRadius: 12.0),
-                                    thumbColor: inactiveColor,
-                                    overlayShape: RoundSliderOverlayShape(
-                                        overlayRadius: 20.0),
-                                    activeTrackColor: Colors.white,
-                                    inactiveTrackColor: Colors.pink[200]),
+                                  inactiveTrackColor: Color(0xFF8D8E98),
+                                  activeTrackColor: Colors.white,
+                                  thumbColor: Color(0xFFEB1555),
+                                  overlayColor: Color(0x29EB1555),
+                                  thumbShape: RoundSliderThumbShape(
+                                      enabledThumbRadius: 12.0),
+                                  overlayShape: RoundSliderOverlayShape(
+                                      overlayRadius: 20.0),
+                                ),
                                 child: Slider(
                                     value: height.toDouble(),
-                                    min: 120.0,
+                                    min: 100.0,
                                     max: 220.0,
                                     onChanged: (double changeHeight) {
                                       setState(() {
@@ -157,90 +161,81 @@ class _CalculatorViewState extends State<CalculatorView> {
                   ],
                 ),
               ),
-
-              //age+weight
+              //Weight and age container
               Expanded(
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: BMIContainer(
-                        containerColor: activeColor,
-                        mychild: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              "Weight",
-                              style: mytextstyle,
-                            ),
-                            Text(weight.toString(), style: mynumberstyle),
-                            Row(
-                              children: [
-                                ButtonPlusMois(
-                                  buttonIcon: FontAwesomeIcons.minus,
-                                  onPressfn: () {
-                                    setState(() {
-                                      weight--;
-                                    });
-                                  },
-                                ),
-                                SizedBox(
-                                  width: 0.0,
-                                ),
-                                ButtonPlusMois(
-                                  buttonIcon: FontAwesomeIcons.plus,
-                                  onPressfn: () {
-                                    setState(() {
-                                      weight++;
-                                    });
-                                  },
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
+                  child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: BMIContainer(
+                      containerColor: cardColor,
+                      mychild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            'WEIGHT',
+                            style: mytextstyle,
+                          ),
+                          Text(
+                            weight.toString(),
+                            style: mynumberstyle,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              RoundIconButton(
+                                icon: FontAwesomeIcons.minus,
+                                onPressfn: () => setState(() => weight--),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              RoundIconButton(
+                                icon: FontAwesomeIcons.plus,
+                                onPressfn: () => setState(() => weight++),
+                              ),
+                            ],
+                          )
+                        ],
                       ),
                     ),
-                    Expanded(
-                      child: BMIContainer(
-                        containerColor: activeColor,
-                        mychild: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              "Age",
-                              style: mytextstyle,
-                            ),
-                            Text(age.toString(), style: mynumberstyle),
-                            Row(
-                              children: [
-                                ButtonPlusMois(
-                                  buttonIcon: FontAwesomeIcons.minus,
-                                  onPressfn: () {
-                                    setState(() {
-                                      age--;
-                                    });
-                                  },
-                                ),
-                                SizedBox(
-                                  width: 0.0,
-                                ),
-                                ButtonPlusMois(
-                                  buttonIcon: FontAwesomeIcons.plus,
-                                  onPressfn: () {
-                                    setState(() {
-                                      age++;
-                                    });
-                                  },
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
+                  ),
+                  Expanded(
+                    child: BMIContainer(
+                      containerColor: cardColor,
+                      mychild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            'AGE',
+                            style: mytextstyle,
+                          ),
+                          Text(
+                            age.toString(),
+                            style: mynumberstyle,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              RoundIconButton(
+                                icon: FontAwesomeIcons.minus,
+                                onPressfn: () => setState(() => age--),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              RoundIconButton(
+                                icon: FontAwesomeIcons.plus,
+                                onPressfn: () => setState(() => age++),
+                              ),
+                            ],
+                          )
+                        ],
                       ),
                     ),
-                  ],
-                ),
-              ),
+                  ),
+                ],
+              )),
+
               CalculatorButton(
                 buttonFN: () {
                   CalculBMI bmi = CalculBMI(height: height, weight: weight);

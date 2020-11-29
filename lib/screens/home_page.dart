@@ -1,4 +1,5 @@
 import 'package:bmi_calculator/screens/calclutor_page.dart';
+import 'package:bmi_calculator/utils/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
@@ -27,27 +28,28 @@ class _HomePageViewState extends State<HomePageView> {
           appBar: AppBar(
             title: Text("Welcome to BMI Calculator"),
             centerTitle: true,
+            backgroundColor: inactiveColor,
           ),
+          backgroundColor: inactiveColor,
           body: SafeArea(
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //TextField
+
               TextFormField(
-                cursorColor: Colors.white,
+                cursorColor: Colors.black,
                 initialValue: 'Write your name',
-                maxLength: 20,
+                maxLength: 25,
+                textAlign: TextAlign.center,
+                cursorWidth: 5.0,
                 decoration: InputDecoration(
-                  icon: Icon(
-                    Icons.supervised_user_circle,
-                  ),
-                  labelText: 'Your name',
-                  labelStyle: TextStyle(
-                    color: Colors.white,
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: activeColor),
-                  ),
+                  contentPadding: new EdgeInsets.symmetric(
+                      vertical: 25.0, horizontal: 10.0),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30.0)),
+                  filled: true,
+                  fillColor: Colors.white,
                 ),
               ),
               //button add
