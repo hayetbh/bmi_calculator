@@ -32,11 +32,11 @@ class ResultPage extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    "Your Result  ",
+                    box.read("name").toString(),
                     style: mytitlestyle,
                   ),
                   Text(
-                    box.read("name").toString(),
+                    " your Result is:",
                     style: mytitlestyle,
                   ),
                 ],
