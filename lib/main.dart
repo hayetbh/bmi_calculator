@@ -13,7 +13,9 @@ void main() async {
     debugShowMaterialGrid: false,
     initialRoute: '/homePage',
     theme: ThemeData.dark().copyWith(
-        accentColor: Colors.blueGrey[900], primaryColor: Colors.blueGrey[900]),
+      primaryColor: Color(0xff0a0e21),
+      scaffoldBackgroundColor: Color(0xff0a0e21),
+    ),
     defaultTransition: Transition.zoom,
     //translations: MyTranslations(),
     //locale: Locale('fr'),

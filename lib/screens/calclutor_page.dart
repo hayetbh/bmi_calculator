@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-const activeColor = Colors.pink;
-const inactiveColor = Colors.blueGrey;
+const activeColor = Color(0xffEA1556);
+const inactiveColor = Color(0xff111328);
 Color femaleColor = activeColor;
 Color maleColor = inactiveColor;
 enum Gender {
