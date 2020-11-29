@@ -39,7 +39,7 @@ class _CalculatorViewState extends State<CalculatorView> {
         body: SafeArea(
           child: Column(
             children: <Widget>[
-              //gender
+              //Gender Container
               Expanded(
                 child: Row(
                   children: <Widget>[

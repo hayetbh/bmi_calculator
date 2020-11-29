@@ -18,11 +18,12 @@ class HomePageView extends StatefulWidget {
 }
 
 class _HomePageViewState extends State<HomePageView> {
-  //final TextEditingController emailcontroller = TextEditingController();
+  //GetStorage box = GetStorage();
 
+  // this allows us to access the TextField text
+  TextEditingController namecontroller = TextEditingController();
   GetStorage box = GetStorage();
 
-  final TextEditingController emailcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     box.writeIfNull("name", "test name");
@@ -41,8 +42,9 @@ class _HomePageViewState extends State<HomePageView> {
             children: [
               //TextField
               TextFormField(
+                controller: namecontroller,
+                obscureText: false,
                 cursorColor: Colors.black,
-                initialValue: 'Write your name',
                 maxLength: 25,
                 textAlign: TextAlign.center,
                 cursorWidth: 5.0,
@@ -62,8 +64,9 @@ class _HomePageViewState extends State<HomePageView> {
                 foregroundColor: Colors.white,
                 onPressed: () {
                   // Respond to button press
-                  box.write("name", emailcontroller.text);
-                  Get.to(Calculator(), arguments: "this argument");
+
+                  Get.to(Calculator());
+                  box.write("name", namecontroller.text);
                 },
                 icon: Icon(Icons.add),
                 label: Text('Next'),
@@ -75,15 +78,3 @@ class _HomePageViewState extends State<HomePageView> {
     );
   }
 }
-
-/* floatingActionButon: FloatingActionButton.extended(
-        backgroundColor: const Color(0xff03dac6),
-        foregroundColor: Colors.black,
-        onPressed: () {
-          // Respond to button press
-          box.write("email", emailcontroller.text);
-          Get.to(SecondPage() , arguments: "this argument");
-        },
-        icon: Icon(Icons.arrow_right_outlined),
-        label: Text("next".tr),
-      ),*/

@@ -7,14 +7,14 @@ import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
 
 class ResultPage extends StatelessWidget {
-  ResultPage(
-      {@required this.resultText, this.bmiResult, this.resultInterpretation});
+  ResultPage({this.resultText, this.bmiResult, this.resultInterpretation});
 
   final String bmiResult;
   final String resultText;
   final String resultInterpretation;
+
   GetStorage box = GetStorage();
-  var arg = Get.arguments;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,11 +32,13 @@ class ResultPage extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    "Your Result".trArgs([box.read('name').toString()]),
+                    "Your Result  ",
                     style: mytitlestyle,
                   ),
-                  Text(arg.toString()),
-                  Text(box.read("name").toString()),
+                  Text(
+                    box.read("name").toString(),
+                    style: mytitlestyle,
+                  ),
                 ],
               ),
             ),
