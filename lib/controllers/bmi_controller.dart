@@ -6,6 +6,7 @@ class CalculBMI {
   final int height;
   final int weight;
   double _bmi;
+  //final String name;
 
   CalculBMI({this.height, this.weight});
 

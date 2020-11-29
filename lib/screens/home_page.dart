@@ -20,23 +20,26 @@ class HomePageView extends StatefulWidget {
 class _HomePageViewState extends State<HomePageView> {
   //final TextEditingController emailcontroller = TextEditingController();
 
-  //GetStorage box = GetStorage();
+  GetStorage box = GetStorage();
+
+  final TextEditingController emailcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    box.writeIfNull("name", "test name");
+    print(box.read('name'));
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
-            title: Text("Welcome to BMI Calculator"),
-            centerTitle: true,
-            backgroundColor: inactiveColor,
-          ),
+        appBar: AppBar(
+          title: Text("Welcome to BMI Calculator"),
+          centerTitle: true,
           backgroundColor: inactiveColor,
-          body: SafeArea(
-              child: Column(
+        ),
+        backgroundColor: inactiveColor,
+        body: SafeArea(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //TextField
-
               TextFormField(
                 cursorColor: Colors.black,
                 initialValue: 'Write your name',
@@ -52,19 +55,23 @@ class _HomePageViewState extends State<HomePageView> {
                   fillColor: Colors.white,
                 ),
               ),
+
               //button add
               FloatingActionButton.extended(
                 backgroundColor: activeColor,
                 foregroundColor: Colors.white,
                 onPressed: () {
                   // Respond to button press
+                  box.write("name", emailcontroller.text);
                   Get.to(Calculator(), arguments: "this argument");
                 },
                 icon: Icon(Icons.add),
                 label: Text('Next'),
               )
             ],
-          ))),
+          ),
+        ),
+      ),
     );
   }
 }

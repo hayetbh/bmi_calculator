@@ -3,6 +3,8 @@ import 'package:bmi_calculator/utils/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator/utils/widgets.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:get/get.dart';
 
 class ResultPage extends StatelessWidget {
   ResultPage(
@@ -11,6 +13,8 @@ class ResultPage extends StatelessWidget {
   final String bmiResult;
   final String resultText;
   final String resultInterpretation;
+  GetStorage box = GetStorage();
+  var arg = Get.arguments;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,9 +29,15 @@ class ResultPage extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.all(15.0),
               alignment: Alignment.bottomLeft,
-              child: Text(
-                "Your Result",
-                style: mytitlestyle,
+              child: Row(
+                children: [
+                  Text(
+                    "Your Result".trArgs([box.read('name').toString()]),
+                    style: mytitlestyle,
+                  ),
+                  Text(arg.toString()),
+                  Text(box.read("name").toString()),
+                ],
               ),
             ),
           ),
