@@ -1,20 +1,20 @@
 import 'dart:math';
-import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
+//import 'package:get/get.dart';
+//import 'package:get_storage/get_storage.dart';
 
-class CalculBMI extends GetxController {
+class CalculBMI {
   final int height;
   final int weight;
   double _bmi;
 
   CalculBMI({this.height, this.weight});
 
-  String getBMI() {
+  String calculbmi() {
     _bmi = weight / pow(height / 100, 2);
     return _bmi.toStringAsFixed(1);
   }
 
-  String getResult() {
+  String result() {
     if (_bmi > 30)
       return 'Obesity';
     else if (_bmi > 25)
@@ -25,7 +25,7 @@ class CalculBMI extends GetxController {
       return 'Underweight';
   }
 
-  String getInterpretation() {
+  String interpretation() {
     if (_bmi > 30)
       return 'Ohh No! You have much more weight than that of a normal person. Consult a doctor immediately!!';
     else if (_bmi > 25)

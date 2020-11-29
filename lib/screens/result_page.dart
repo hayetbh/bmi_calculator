@@ -20,6 +20,12 @@ const mydescriptionstyle = TextStyle(
 );
 
 class ResultPage extends StatelessWidget {
+  ResultPage(
+      {@required this.resultText, this.bmiResult, this.resultInterpretation});
+
+  final String bmiResult;
+  final String resultText;
+  final String resultInterpretation;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,15 +55,15 @@ class ResultPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    "Normal",
+                    resultText,
                     style: mytextresultstyle,
                   ),
                   Text(
-                    "18.3",
+                    bmiResult,
                     style: myresultstyle,
                   ),
                   Text(
-                    "your bmi is normal",
+                    resultInterpretation,
                     style: mydescriptionstyle,
                   )
                 ],

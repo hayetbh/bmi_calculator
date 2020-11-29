@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/controllers/bmi_controller.dart';
 import 'package:bmi_calculator/screens/result_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -252,9 +253,15 @@ class _CalculatorViewState extends State<CalculatorView> {
               ),
               CalculatorButton(
                 buttonFN: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ResultPage()),
+                  CalculBMI bmi = CalculBMI(height: height, weight: weight);
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => ResultPage(
+                        bmiResult: bmi.calculbmi(),
+                        resultText: bmi.result(),
+                        resultInterpretation: bmi.interpretation(),
+                      ),
+                    ),
                   );
                 },
                 buttonTitle: "CALCULATE",
