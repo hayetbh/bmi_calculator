@@ -25,10 +25,8 @@ class _HomePageViewState extends State<HomePageView> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          backgroundColor: Colors.purple[900],
           appBar: AppBar(
             title: Text("Welcome to BMI Calculator"),
-            backgroundColor: Colors.purple[900],
             centerTitle: true,
           ),
           body: SafeArea(
@@ -49,13 +47,13 @@ class _HomePageViewState extends State<HomePageView> {
                     color: Colors.white,
                   ),
                   enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.pink),
+                    borderSide: BorderSide(color: activeColor),
                   ),
                 ),
               ),
               //button add
               FloatingActionButton.extended(
-                backgroundColor: Colors.pink,
+                backgroundColor: activeColor,
                 foregroundColor: Colors.white,
                 onPressed: () {
                   // Respond to button press

@@ -39,10 +39,8 @@ class _CalculatorViewState extends State<CalculatorView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blueGrey[900],
         appBar: AppBar(
           title: Text("BMI Calculator"),
-          backgroundColor: Colors.blueGrey[900],
         ),
         body: SafeArea(
           child: Column(
