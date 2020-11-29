@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/screens/result_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -249,20 +250,40 @@ class _CalculatorViewState extends State<CalculatorView> {
                   ],
                 ),
               ),
-              Container(
-                child: Center(
-                  child: Text(
-                    "Calculate",
-                    style: TextStyle(fontSize: 25),
-                  ),
-                ),
-                height: 75.0,
-                width: double.infinity,
-                color: Colors.pink[500],
-                margin: EdgeInsets.only(top: 10.0),
-              )
+              CalculatorButton(
+                buttonFN: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ResultPage()),
+                  );
+                },
+                buttonTitle: "CALCULATE",
+              ),
             ],
           ),
+        ));
+  }
+}
+
+class CalculatorButton extends StatelessWidget {
+  CalculatorButton({@required this.buttonFN, @required this.buttonTitle});
+  final Function buttonFN;
+  final String buttonTitle;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+        onTap: buttonFN,
+        child: Container(
+          child: Center(
+            child: Text(
+              buttonTitle,
+              style: TextStyle(fontSize: 25),
+            ),
+          ),
+          height: 75.0,
+          width: double.infinity,
+          color: Colors.pink[500],
+          margin: EdgeInsets.only(top: 10.0),
         ));
   }
 }
