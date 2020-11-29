@@ -4,23 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:bmi_calculator/utils/styles.dart';
+import 'package:bmi_calculator/utils/widgets.dart';
 
-const activeColor = Color(0xffEA1556);
-const inactiveColor = Color(0xff111328);
-Color femaleColor = activeColor;
-Color maleColor = inactiveColor;
 enum Gender {
   male,
   female,
 }
 Gender selectedGender;
-const mytextstyle = TextStyle(
-  fontSize: 18.0,
-);
-const mynumberstyle = TextStyle(
-  fontSize: 36.0,
-  fontWeight: FontWeight.bold,
-);
+
 int height = 170, age = 25, weight = 60;
 
 class Calculator extends StatelessWidget {
@@ -267,65 +259,5 @@ class _CalculatorViewState extends State<CalculatorView> {
             ],
           ),
         ));
-  }
-}
-
-class CalculatorButton extends StatelessWidget {
-  CalculatorButton({@required this.buttonFN, @required this.buttonTitle});
-  final Function buttonFN;
-  final String buttonTitle;
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: buttonFN,
-        child: Container(
-          child: Center(
-            child: Text(
-              buttonTitle,
-              style: TextStyle(fontSize: 25),
-            ),
-          ),
-          height: 75.0,
-          width: double.infinity,
-          color: Colors.pink[500],
-          margin: EdgeInsets.only(top: 10.0),
-        ));
-  }
-}
-
-//les mois et plus button
-class ButtonPlusMois extends StatelessWidget {
-  ButtonPlusMois({this.buttonIcon, this.onPressfn});
-  final IconData buttonIcon;
-  final Function onPressfn;
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(buttonIcon),
-      onPressed: onPressfn,
-    );
-  }
-}
-
-//widget de container
-class BMIContainer extends StatelessWidget {
-  BMIContainer({this.containerColor, this.mychild, this.myoption});
-  final Color containerColor;
-  final Widget mychild;
-  final Function myoption;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: myoption,
-      child: Container(
-        child: mychild,
-        margin: EdgeInsets.all(15.0),
-        decoration: BoxDecoration(
-          color: containerColor,
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-      ),
-    );
   }
 }

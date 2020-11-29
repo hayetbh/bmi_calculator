@@ -1,23 +1,8 @@
 import 'package:bmi_calculator/screens/calclutor_page.dart';
+import 'package:bmi_calculator/utils/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-const mytitlestyle = TextStyle(
-  fontSize: 40.0,
-  fontWeight: FontWeight.bold,
-);
-const mytextresultstyle = TextStyle(
-  color: Color(0xFF24D876),
-  fontSize: 22.0,
-  fontWeight: FontWeight.bold,
-);
-const myresultstyle = TextStyle(
-  fontSize: 100.0,
-  fontWeight: FontWeight.bold,
-);
-const mydescriptionstyle = TextStyle(
-  fontSize: 22.0,
-);
+import 'package:bmi_calculator/utils/widgets.dart';
 
 class ResultPage extends StatelessWidget {
   ResultPage(
